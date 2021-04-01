@@ -1,0 +1,94 @@
+=:=:=:=:=:=:=:=:=:=:=:=:=:=:=:=:=:=:=
+CIS 120 Game Project README
+PennKey: kmaranga
+=:=:=:=:=:=:=:=:=:=:=:=:=:=:=:=:=:=:=
+
+===================
+=: Core Concepts :=
+===================
+
+- List the three core concepts, the features they implement, and why each feature
+  is an appropriate use of the concept. Incorporate the feedback you got after
+  submitting your proposal.
+
+  1. 2-D Arrays - Feedback: Correct - 
+                  I used a 2D array to  model the 8 * 8 checkers board i.e using loops to go through
+                  different tiles and paint them different colors, place pieces appropriately etc.
+
+  2. Collections - Feedback: If you provide more details it might be fine, but generally we do not 
+  allow the collections to be used to model the same state that is being modeled by the 2D array.
+   But for example keeping track of the moves etc would be okay. 
+   
+   I used a map to store the jump destinations of each piece and also to control the moves made by 
+   king pieces. I also used a set to keep track of permissible moves and which moves can be made by
+   which pieces -i.e white checker, white king, black checker etc.
+    
+  3. Testable Component - Feedback: 
+  Could be difficult to artificially generate the mouse input, but certainly doable. 
+  
+  I used JUnit testing to test whether my game implementation was working as expected. I tested how 
+  different pieces moved and whether they landed in the correct positions, that pieces weren't 
+  allowed to move when another piece was blocking them, tested that when a piece reached the last 
+  row of the opponent's side of the board, they were appropriately crowned, pieces could be 
+  correctly captured and whether the correct position in the map was retrieved if needed. 
+
+=========================
+=: Your Implementation :=
+=========================
+
+- Provide an overview of each of the classes in your code, and what their
+  function is in the overall game.
+  
+  Game Class: This class runs the overall game. It implements runnable and provides a run method 
+  that sets up a game panel, instructions panel and board. It also sets the preferred canvas size, 
+  checks win conditions and allows players to alternate turns
+   
+  Board Class: The Board class constructs and draws the Board and tracks the moves made by the 
+  pieces in the game. It's function is to control the moves made by the different pieces and also 
+  checks whether the game is over or ongoing and announces when the game ends. It also checks 
+  how many pieces from each side is remaining after each turn updating their number appropriately.
+   
+  Captured Class: The Captured class encodes the captured pieces from the board and stores which 
+  piece was captured and from what position. It provides getter functions to access its private 
+  fields in the case that one needs to access a captured piece - for example when undoing a move. 
+  
+  BoardTest Class: The BoardTest class provided unit testing for the overall game. 
+  It checked whether the game functionality was  working as expected for example whether different 
+  pieces moved correctly. 
+  
+  Undo Class: The Undo class undoes previous moves made that can be accessed from a linked list 
+  allowing players to reassess their moves hence make better moves that could lead to a win. It's 
+  also useful in the overall game in the occasion that the only moves left for a piece aren't
+  permissible and the game won't continue unless a player undoes their move and makes one that's 
+  permissible. 
+  
+  Position Class: The Position class implements the Comparable interface and gets the x and y 
+  positions of the pieces to be used in the map and set collections.
+
+- Were there any significant stumbling blocks while you were implementing your
+  game (related to your design, or otherwise)?
+  The most significant stumbling block that I experienced while implementing my game design was 
+  ensuring the king pieces moved correctly. A lot of the time, I ran into array index out of bounds 
+  exceptions due to miscalculation which made me simplify the design of my game, allowing the king 
+  pieces to move like the opponent pieces, capture in all directions but for the most part not able 
+  to move both forwards and backwards as in the standard game. :( I also wished I could have had 
+  made the option to restart the game once the game was over without having to run the code again. 
+
+- Evaluate your design. Is there a good separation of functionality? How well is
+  private state encapsulated? What would you refactor, if given the chance?
+  I'm only slightly satisfied with my overall separation of functionality but would definitely 
+  refactor my code given the chance. Given the chance, I would refactor the pieces moves and just 
+  have that in a separate class instead of having them in the Board class. 
+
+ 
+========================
+=: External Resources :=
+========================
+
+- Cite any external resources (libraries, images, tutorials, etc.) that you may
+  have used while implementing your game.
+  I used Oracle documentation to figure out how some imported classes I used worked - 
+  For example the Graphics2D class documentation on what shapes were permissible and how to 
+  implement them. 
+
+  
