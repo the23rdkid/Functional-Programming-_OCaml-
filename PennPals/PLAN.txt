@@ -1,0 +1,92 @@
+=:=:=:=:=:=:=:=:=:=:=:=:=:=:=:=:=:=:=
+CIS 120 Homework 7 README
+PennKey: _______
+=:=:=:=:=:=:=:=:=:=:=:=:=:=:=:=:=:=:=
+
+============
+=: Task 2 :=
+============
+
+- Do you plan on creating any new classes in your design? If so, what classes
+  are you making, what do they store, and what behaviors do they have?
+
+- How do you plan on storing what users are registered on the server?
+
+- How do you plan on keeping track of which user has which user ID, considering
+  the fact that the user's nickname can change over the course of the program?
+
+- How do you plan on storing what users are in a channel?
+
+- How do you plan on keeping track of which user is the owner of each channel?
+
+- Justify your choice of collections (Set, Map, or List) for the
+  collections you use in your design.
+
+Yes. I plan on making a Channel class. This class stores the names of the users in a 
+channel as a Set of Strings, the name of the owner and the state of the channel - 
+whether it is public or private. It can add or remove users and check to change the 
+private state of the channel. 
+
+I plan on storing registered users on the server as Strings in a TreeSet. I use a set because 
+the registered users shouldn't be able to have duplicates
+
+I plan on keeping track of each User's ID by storing the User's information in a map. 
+Whereby the UserID will be the key and the nickname a value. If the nickname in the registered 
+Users entry set matches the value in the user's map(K, V), then I would check for that
+user's ID by retrieving their key in the map.  
+
+I plan on storing what users are in a channel in a TreeSet. 
+
+I plan on keeping track of which user is the owner of each channel by retrieving the 
+list of channels from whence I would check who owns each channel. In the channel class, 
+the name of each channel's owner is displayed and from thence I would get which user is the 
+owner of which channel. 
+
+I chose to use the collections Map since it provides an easy way to match a user's ID
+and their nickname with its built-in (Key, Value) feature. 
+
+============
+=: Task 3 :=
+============
+
+- Did you make any changes to your design while doing this task? Why?
+I did not make any changes to my design while doing this task since I was pretty satisfied with 
+the design decisions I made in task 2. 
+
+============
+=: Task 4 :=
+============
+
+- Did you make any changes to your design while doing this task? Why?
+I did not make any changes to my design while doing this task either. I simply built 
+upon the data structures I chose in task 2 above. 
+
+============
+=: Task 5 :=
+============
+
+- How do you plan on keeping track of which channels are invite-only?
+  I plan on keeping track of channels that are invite-only by checking their isPrivate state
+  which is stored in the Channel class I created. 
+- Will you make any changes to your work from before in order to make
+  implementing invite-only channels easier?
+  I don't think so. I will probably leave it as is since it works well to the best of my 
+  understanding. 
+
+============
+=: Task 6 :=
+============
+
+- Did you have to make any changes to your design in Task 6? Why?
+I made a few tweaks here and there to my design in task 6. The major changes were my use and 
+placement of comments to ensure they were in the proper place(getting rid of TODO stubs etc), and
+storing booleans needed to go into if statements in a variable which I then call to enhance 
+readability. 
+
+- If you were to redo this assignment, what changes (if any) would you make in
+  how you designed your code?
+  If I were to redo this assignment, I would perhaps write a few more comprehensive tests, I would 
+  also try and figure out how to correctly implement the comparable interface and decode "yellow
+  warnings" better i.e the warning that "comparable is a raw type and its inputs should be 
+  parametrized". 
+
